@@ -1,4 +1,4 @@
-var socket = io.connect('http://localhost:8080');
+var socket = io.connect('http://'+host+':8080');
 
 var elvCount = 0;
 
@@ -126,8 +126,10 @@ var cleanSlides = function(){
 };
 
 var changeSlide = function(oldVal,newVal){
+    console.log(oldVal);
+    console.log(newVal);
     cleanSlides();
-    var data = slides[current_slide].innerHTML;
+    var data = slides[newVal].innerHTML;
     var newSlide = document.createElement("div");
     newSlide.className = "";
     newSlide.innerHTML = data;
@@ -186,4 +188,4 @@ socket.on("elvCount", function(data){
     elvCount = data;
 });
 
-load_course("health");
+load_course("biologie");

@@ -14,7 +14,7 @@ register_slides([
 		questions: [
 			{
 				type: "qcm",
-				question: "Qu'est-ce qui rassemble l'ensemble des êtres vivants ?<br>Laquelle de ces caractéristiques est commune aux poissons, aux chimpanzés et à la baleine ?",
+				question: "Laquelle de ces caractéristiques est commune aux poissons, aux chimpanzés et à la baleine ?",
 				answers: [ "Lieu de vie", "Leur information génétique est constituée d'ADN", "Ils appartiennent tous à la famille des mammifères" ],
 				correct_answer_index: 2
 			}

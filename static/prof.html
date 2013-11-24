@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8" />
     <title>Interface prof</title>
-    <script src="http://localhost:8080/socket.io/socket.io.js"></script>
 
     <link rel="stylesheet" href="style/prof.css"/>
 </head>
@@ -18,13 +17,14 @@
                     <select name="course" id="courseSelector">
                         <option value="" selected>----------</option>
                         <option value="health">Santé</option>
+                        <option value="biologie">Biologie</option>
                     </select>
                 </div>
                 <div class="slideContainer disabled">
                     <div id="slide"></div>
                     <div class="nav">
-                        <button id="previous" onClick="foo_previous_slide()">Slide précédent</button>
-                        <button id="next" onClick="foo_next_slide()">Slide suivant</button>
+                        <button id="previous">Slide précédent</button>
+                        <button id="next">Slide suivant</button>
                     </div>
                 </div>
             </div>
@@ -38,7 +38,20 @@
         </div>
     </div>
 
-    <script src="prof.js"></script>
+    <script>
+        var url = document.location;
+        var host = location.host;
+        console.log(host);
+
+        var script = document.createElement("script");
+        script.src = "http://"+host+ ":8080/socket.io/socket.io.js";
+        document.getElementsByTagName("head")[0].appendChild(script);
+
+        var script = document.createElement("script");
+        script.src = "prof.js";
+        document.getElementsByTagName("head")[0].appendChild(script);
+
+    </script>
 	
 
 
