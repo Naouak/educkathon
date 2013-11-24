@@ -1,0 +1,56 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	font-family: 'Andika', sans-serif;
+	background-color: #FFF;
+}
+#wrapper {
+	width: 1024px;
+	margin: 0 auto;	
+	background: url('../img/bg1.png') repeat 0 0;
+	box-shadow:  4px 4px 4px #252525;
+}
+h1, p, textarea {
+	margin: 5px 20px;
+}
+h1 {
+	font-family: 'Orbitron', sans-serif;
+	font-size: 1.5em;
+	color: #FFF;
+	text-shadow: 1px 1px 2px #252525;
+}
+#slides, #notes, #questions  {
+	display: inline-block;
+	vertical-align: top;
+}
+#slides, #notes {
+	margin-top: 50px;
+}
+#slides {
+	width: 580px;
+	min-height: 580px;
+	background-color: #9168B4;
+	margin-left: 29px;
+}
+#course_content {
+	width: 530px;
+	height: 400px;
+	box-shadow:  4px 4px 4px #413253;
+	margin: 10px 20px;
+	background-color: #FFF;
+}
+#notes {
+	width: 380px;
+	min-height: 580px;
+	background-color: #A7B200;
+	margin-left: 7px;
+}
+#questions {
+	width: 970px;
+	min-height: 300px;
+	background-color: #005FB1;
+	margin-left: 29px;
+	margin-top: 10px;
+	margin-bottom: 50px;
+}
