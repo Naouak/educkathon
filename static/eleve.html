@@ -57,10 +57,18 @@
         var script = document.createElement("script");
         script.src = "http://"+host+ ":8081/socket.io/socket.io.js";
         document.getElementsByTagName("head")[0].appendChild(script);
+        var boot = function(){
+            if(io){
+                var script = document.createElement("script");
+                script.src = "eleve.js";
+                document.getElementsByTagName("head")[0].appendChild(script);
+            }
+            else {
+                setTimeout(boot,100);
+            }
+        };
+        setTimeout(boot,100);
 
-        var script = document.createElement("script");
-        script.src = "eleve.js";
-        document.getElementsByTagName("head")[0].appendChild(script);
 
     </script>
 </body>

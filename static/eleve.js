@@ -14,10 +14,6 @@ var response = {
 
 var socket = io.connect("http://"+host+":8081");
 
-socket.on('news', function (data) {
-    console.log(data);
-    socket.emit('my other event', { my: 'data' });
-});
 
 socket.on('new_question', function (question) {
     console.log(question);

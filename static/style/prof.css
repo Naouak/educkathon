@@ -95,6 +95,7 @@ h1 {
     flex: 1 380px;
     background-color: #A7B200;
     margin-left: 7px;
+    overflow: auto;
 }
 #questions {
     margin: 10px 20px;

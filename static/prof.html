@@ -47,9 +47,17 @@
         script.src = "http://"+host+ ":8080/socket.io/socket.io.js";
         document.getElementsByTagName("head")[0].appendChild(script);
 
-        var script = document.createElement("script");
-        script.src = "prof.js";
-        document.getElementsByTagName("head")[0].appendChild(script);
+        var boot = function(){
+            if(io){
+            var script = document.createElement("script");
+            script.src = "prof.js";
+            document.getElementsByTagName("head")[0].appendChild(script);
+            } else {
+                setTimeout(boot,100);
+            }
+        };
+
+        setTimeout(boot,100);
 
     </script>
 	
