@@ -188,4 +188,4 @@ socket.on("elvCount", function(data){
     elvCount = data;
 });
 
-load_course("biologie");
+//load_course("biologie");
