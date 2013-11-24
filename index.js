@@ -4,7 +4,7 @@ var elvIO = require("socket.io").listen(8081);
 var profsSockets = [];
 var elvSockets = [];
 
-var events = ["new_question","answer","end_question","next_slide","previous_slide","goto_slide"];
+var events = ["new_question", "answer", "end_question", "next_slide", "previous_slide", "goto_slide", "new_course"];
 
 var sendToElv = function(name,data){
   for(var i = 0; i < elvSockets.length; i++){
@@ -22,6 +22,8 @@ profIO.sockets.on("connection", function(socket){
     console.log("Prof Connection");
 
     profsSockets.push(socket);
+
+    socket.emit("elvCount", elvSockets.length);
 
     socket.on("disconnect", function(){
         for(var i = 0; i < profsSockets.length; i++){
@@ -58,10 +60,12 @@ elvIO.sockets.on("connection", function(socket){
     for(var i = 0; i < events.length; i++){
         (function(i){
             socket.on(events[i], function(data){
-                sendToProf(events[i],data);
+                sendToProf(events[i], data);
             });
         })(i);
     }
+
+    sendToProf("elvCount",elvSockets.length);
 
     socket.on("test", function(){
         console.log("Testing eleve...");

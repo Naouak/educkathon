@@ -4,11 +4,43 @@
     <meta charset="utf-8" />
     <title>Interface prof</title>
     <script src="http://localhost:8080/socket.io/socket.io.js"></script>
+
     <link rel="stylesheet" href="style/prof.css"/>
 </head>
+
 <body>
-    <div id="questions"></div>
-    <div id="currentQuestion"></div>
+    <div class="flexBox">
+        <div class="course-wrapper">
+            <div class="course">
+                <!--<em>Charger un Cours</em>-->
+                <div class="fileLoading">
+                    <label for="courseSelector">Choisissez le cours à charger</label>
+                    <select name="course" id="courseSelector">
+                        <option value="" selected>----------</option>
+                        <option value="health">Santé</option>
+                    </select>
+                </div>
+                <div class="slideContainer disabled">
+                    <div id="slide"></div>
+                    <div class="nav">
+                        <button id="previous" onClick="foo_previous_slide()">Slide précédent</button>
+                        <button id="next" onClick="foo_next_slide()">Slide suivant</button>
+                    </div>
+                </div>
+            </div>
+            <div class="activeQuestion">
+                <div id="currentQuestion"></div>
+            </div>
+        </div>
+        <div class="questionList">
+            <h1>Liste des Questions</h1>
+            <div id="questions"></div>
+        </div>
+    </div>
+
     <script src="prof.js"></script>
+	
+
+
 </body>
 </html>

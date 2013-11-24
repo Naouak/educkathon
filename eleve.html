@@ -1,19 +1,129 @@
 <!DOCTYPE html>
+
 <html>
+
 <head>
-    <title></title>
+ 
+    <meta charset="utf-8" />
+    <title>Client Elève</title>
 
     <script src="http://localhost:8081/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="style/eleve.css"/>
+	<link href='http://fonts.googleapis.com/css?family=Andika' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+	
     <script>
+
+		var currentQuestion;
+    
+		var question_1 = {
+			id: 1,
+			type: "qcm",
+			question: "quel est le cheval blanc d'henri 4",
+			answers: ["blanc", "gris", "noi"]	
+		};    
+    
+    	var response = {
+			question_id: 1,
+			answer: 2    
+   	 };
+    
         var socket = io.connect('http://localhost:8081');
+
         socket.on('news', function (data) {
             console.log(data);
             socket.emit('my other event', { my: 'data' });
         });
+        
+        socket.on('new_question', function (question) {
+            console.log(question);
+            document.getElementById("question_core").innerHTML = question.question;
+            currentQuestion = question;
+            var html = "";
+            for (var i=0; i<question.answers.length; i++) {
+					//html += "<input type='checkbox'>";            	
+            	//html += question.answers[i];
+            	html += "<button onClick='send_answer ("+i+")'>"+question.answers[i]+"</button>";
+            }
+            document.getElementById("choices").innerHTML = html;
+            // socket.emit('my other event', { my: 'data' });
+        });        
+       
+ 
+        socket.on('end_question', function () {
+            console.log("fin du temps imparti pour la question");
+        }	);
+   
+		socket.on("new_course", function(data){
+            console.log("new course");
+			document.getElementById("course_content").innerHTML = data;
+        });
+		   
+        
+		socket.on("next_slide", function(data){
+            console.log("next slide");
+			document.getElementById("course_content").innerHTML = data;
+        });
+		
+
+		socket.on("previous_slide", function(data){
+            console.log("previous slide");
+			document.getElementById("course_content").innerHTML = data;
+        });
+		
+		
+        function send_answer (index_answer) {
+        		var answer_object = {
+        			question_id: parseInt (currentQuestion.id, 10),
+        			answer: parseInt (index_answer, 10)
+        		};
+        		console.log (answer_object);
+	        socket.emit('answer', answer_object);
+	        var html  = document.getElementById("id_history").innerHTML;
+	        var html2 = html + "<br>" + currentQuestion.question + " --> " + currentQuestion.answers[index_answer];
+	        document.getElementById("id_history").innerHTML = html2;
+	        reset_question ();
+        }
+
+		function reset_question () {
+				document.getElementById("question_core").innerHTML = "";
+            currentQuestion = null;
+				document.getElementById("choices").innerHTML = "";
+		}
+        
     </script>
 
 </head>
-<body>
 
+<body>
+	<div id="wrapper">
+			<div id="slides">
+				<h1>Cours</h1>
+					<div id="course_content"></div>
+			</div>
+			
+			<div id="notes">
+				<h1>Notes </h1>
+				<textarea cols=40 rows=30></textarea>
+			</div>			
+			
+			<div id="questions">
+				<h1>Question du Professeur </h1>		
+				<div id="test">
+					<button onClick="socket.emit('test', {my:5});">requerir une question test au serveur</button>
+				</div>
+				<div id="question_core"></div>
+				<h2>Réponse </h2>
+				<div id="choices"></div>		
+		<!--		
+				<textarea id="reponse">  </textarea>
+				<button onClick="send_answer (currentQuestion.id);">soumettre la réponse</button>
+		-->	
+
+				<h2>Historique </h2>
+					<div id="id_history"> </div>
+			</div>
+	</div>
 </body>
+
 </html>

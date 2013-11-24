@@ -1,3 +1,210 @@
 li{
     background-color: #ff11ec;
 }
+
+.disabled{
+    display: none;
+}
+
+.flexBox{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    padding: 30px;
+}
+
+
+#slide{
+    width: 640px;
+    height: 480px;
+    border: solid #dadada 1px;
+}
+
+
+body {
+    font-family: 'Andika', sans-serif;
+    background-color: #FFF;
+}
+.flexBox {
+    /*width: 1024px;*/
+    margin: 0 auto;
+    background: url('../img/bg1.png') repeat 0 0;
+    box-shadow:  4px 4px 4px #252525;
+}
+h1, p, button {
+    margin: 10px 20px;
+}
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5em;
+    color: #FFF;
+    text-shadow: 1px 1px 2px #252525;
+}
+
+.nav{
+    display: flex;
+    width: 640px;
+    justify-content: space-between;
+    margin: auto;
+}
+.nav > button{
+    height: 50px;
+    width: 300px;
+    background: red;
+    color: white;
+    border: 0;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-size: 125%;
+    margin: 10px 0;
+}
+
+#previous {
+}
+#next {
+}
+/*#cours, #liste_questions, #question_courante {*/
+    /*display: inline-block;*/
+    /*vertical-align: top;*/
+/*}*/
+.course-wrapper{
+    flex: 2 640px;
+    display: flex;
+    flex-direction: column;
+}
+.course {
+    /*width: 580px;*/
+    /*min-height: 580px;*/
+    background-color: #9168B4;
+    padding: 1px;
+    flex: 3 480px;
+    min-height: 575px;
+    max-height: 575px;
+}
+#slide {
+    /*width: 530px;*/
+    /*height: 400px;*/
+    box-shadow:  4px 4px 4px #413253;
+    margin: 10px auto;
+    background-color: #FFF;
+}
+
+.questionList {
+    /*width: 380px;*/
+    /*min-height: 580px;*/
+    flex: 1 380px;
+    background-color: #A7B200;
+    margin-left: 7px;
+}
+#questions {
+    margin: 10px 20px;
+}
+
+#questions > div{
+    background: RGBA(255,255,255,0.5);
+    font-weight: bold;
+    padding: 3px;
+    margin: 3px;
+    font-size: 125%;
+}
+
+#questions > div:hover{
+    background: grey;
+    cursor: pointer;
+}
+
+#questions > div.sent{
+    color: red;
+}
+
+.activeQuestion {
+    /*width: 970px;*/
+    /*min-height: 300px;*/
+    background-color: #005FB1;
+    margin-top: 10px;
+    /*margin-bottom: 50px;*/
+    flex: 1 200px;
+    overflow: auto;
+}
+#currentQuestion {
+    margin: 10px 10px;
+}
+
+#currentQuestion h2, .answersStats{
+    margin: 0;
+    background: rgba(255,255,255,0.5);
+    padding: 5px;
+}
+
+.answersStats{
+    font-size: 125%;
+    margin: 10px 0;
+}
+
+#currentQuestion ul{
+    background: rgba(255,255,255,0.5);
+    padding: 5px;
+    margin: 0;
+}
+
+#currentQuestion ul li{
+    margin: 3px;
+    padding: 3px;
+    box-sizing: border-box;
+    color: white;
+    font-size: 125%;
+    white-space: nowrap;
+    overflow: visible;
+    background-color: #208422;
+    list-style: none;
+}
+
+.questionSent button.sendQuestion{
+    display: none;
+}
+
+button{
+    margin: 10px 0;
+    width: 300px;
+    height: 50px;
+    color: white;
+    background: red;
+    text-transform: uppercase;
+    font-size: 125%;
+    border: 0;
+}
+
+button:hover{
+    background: white;
+    color: red;
+    cursor: pointer;
+}
+
+button:disabled{
+    opacity: 0.5;
+}
+
+#slide{
+    overflow: hidden;
+    position: relative;
+}
+
+.slide{
+    position: absolute;
+    width: 640px;
+    height: 480px;
+    transition: left 1s;
+    left: 0px;
+    background: white;
+}
+
+.slide.prevSlide{
+    left: -640px;
+}
+
+.slide.nextSlide{
+    left: 640px;
+}
